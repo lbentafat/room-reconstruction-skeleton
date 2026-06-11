@@ -136,7 +136,7 @@ The reconstruction has known weaknesses on this scene: the two bright
 windows saturate in nearly every frame, the polished floor and glass
 produce specular artifacts, and casual handheld motion leaves some
 surfaces under-covered. The confidence layer is meant to make these
-weaknesses explicit rather than hide them — low-confidence regions
+weaknesses explicit rather than hide them  low-confidence regions
 match the saturated and reflective patches.
 
 ![Confidence heatmap on the cleaned point cloud: green = trusted
@@ -190,7 +190,7 @@ on an A100 with a wider window.
 
 **Why a confidence layer.** Casual phone video gives noisy
 reconstructions with reliable and unreliable regions. A consumer of
-this output — a robot, for example — needs to know which parts to
+this output a robot, for example  needs to know which parts to
 trust. The geometric confidence is computed rather than learned, so
 it is explainable and controllable. It is also used as a weight inside
 RANSAC, so confidence shapes the structural extraction directly rather
@@ -210,12 +210,12 @@ pre-defined quality criteria (longer mean line length, higher mean
 support, lower variance, fewer short fragments) makes the choice
 reproducible. 0.04 wins on 4 of 5 criteria.
 
-**Why triple-plane intersections for nodes.** The first node detector
+**Why triple plane intersections for nodes.** The first node detector
 looked for pairs of lines that came close. After Manhattan
 regularisation many lines became strictly parallel and never
 approached, so that detector returned zero. Solving directly for the
 point where three planes meet removes the parallelism problem and
-yields a well-defined architectural node — which is what a corner
+yields a well-defined architectural node which is what a corner
 mathematically *is*.
 
 **What did not work and was kept out.** Histogram equalisation (CLAHE)
@@ -229,7 +229,7 @@ scope per the brief.
 
 The reconstruction inherits limitations from monocular phone video.
 Saturated windows, glass reflections, and motion blur produce
-low-confidence regions that no post-processing fully fixes. The
+low-confidence regions that no post processing fully fixes. The
 confidence layer surfaces these honestly rather than hiding them.
 
 The Manhattan prior is justified only for the dominant structural
@@ -237,7 +237,7 @@ planes. Smaller furniture-like planes remain unregularised, which is
 the correct behaviour but means the skeleton does not produce a
 perfectly cuboid room outline.
 
-The corner-node detector recovers ceiling-side architectural nodes
+The corner-node detector recovers ceiling side architectural nodes
 more reliably than floor-side ones, because the floor plane in this
 scene intersects fewer well-supported vertical planes. Much of the
 lower wall is occluded by furniture.
